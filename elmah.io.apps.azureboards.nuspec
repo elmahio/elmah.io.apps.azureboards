@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <version>$version$</version>
+    <authors>elmah.io</authors>
+    <owners>elmah.io</owners>
+    <id>elmah.io.apps.azureboards</id>
+    <title>Azure Boards Integration</title>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Create an issue on Azure Boards when a new error is logged on elmah.io.</description>
+    <projectUrl>https://github.com/elmahio/elmah.io.apps.azureboards</projectUrl>
+    <iconUrl>https://elmah.io/images/appstore/elmah.io.apps.azureboards.png</iconUrl>
+	<tags>Error Exception Reporting Management Logging ELMAH Diagnostics Tracing Azure DevOps</tags>
+  </metadata>
+  <files>
+    <file src="manifest.json" target="manifest.json" />
+  </files>
+</package>

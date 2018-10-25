@@ -1,0 +1,40 @@
+{
+	"variables": [{
+		"key": "organization",
+		"name": "Organization",
+		"description": "The name of your organization (for https://dev.azure.com/elmahio organization is elmahio)",
+		"example": "elmahio",
+		"type": "text",
+		"required": true
+	},{
+		"key": "project",
+		"name": "Project",
+		"description": "The name of your project (for https://dev.azure.com/elmahio/elmah.io project is elmah.io)",
+		"example": "elmah.io",
+		"type": "text",
+		"required": true
+	},{
+		"key": "token",
+		"name": "Token",
+		"description": "Azure DevOps personal access token to access the API",
+		"example": "b09f673szz38f1s75hc6hv1hl3etz7cyimgc796dkmyl033ks7mr",
+		"type": "text",
+		"required": true
+	}],
+	"rule": {
+		"title": "Create a new issue on Azure Boards on new errors",
+		"query": "(severity:Error OR severity:Fatal) AND isNew:true",
+		"then": {
+			"type": "http",
+			"url": "https://dev.azure.com/$organization/$project/_apis/wit/workitems/$Bug?api-version=4.1",
+			"method": "post",
+			"body": "[ { \"op\": \"add\", \"path\": \"/fields/System.Title\", \"value\": \"$message\" }, { \"op\": \"add\", \"path\": \"/fields/Microsoft.VSTS.TCM.SystemInfo\", \"value\": \"Log: $logName<br/>Time: $time<br/>Hostname: $hostName<br/>Type: $type<br/>Source: $source<br/>User: $user<br/><a href='https://app.elmah.io/errorlog/error?logid=$logId&id=$id'>Details</a>\" }, { \"op\": \"add\", \"path\": \"/fields/Microsoft.VSTS.TCM.ReproSteps\", \"value\": \"<ol><li>HTTP $method $url</li><li>$statusCode returned</li></ol>\" } ]",
+			"contentType": "application/json-patch+json",
+			"authentication": {
+				"type": "basic",
+				"username": "$token"
+			},
+			"testUrl": "https://dev.azure.com/$organization/$project/_apis/wit/workitemtypes/Bug?api-version=4.1"
+		}
+	}
+}
