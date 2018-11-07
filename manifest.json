@@ -1,4 +1,5 @@
 {
+	"helpUrl": "https://docs.elmah.io/elmah-io-apps-azure-boards/",
 	"variables": [{
 		"key": "organization",
 		"name": "Organization",
