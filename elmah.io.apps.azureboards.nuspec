@@ -8,7 +8,8 @@
     <title>Azure Boards Integration</title>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Create an issue on Azure Boards when a new error is logged on elmah.io.</description>
-    <projectUrl>https://github.com/elmahio/elmah.io.apps.azureboards</projectUrl>
+    <projectUrl>https://elmah.io/</projectUrl>
+    <repository type="git" url="https://github.com/elmahio/elmah.io.apps.azureboards" />
     <iconUrl>https://elmah.io/images/appstore/elmah.io.apps.azureboards.png</iconUrl>
 	<tags>Error Exception Reporting Management Logging ELMAH Diagnostics Tracing Azure DevOps</tags>
   </metadata>
