@@ -24,7 +24,7 @@
 	}],
 	"rule": {
 		"title": "Create a new issue on Azure Boards on new errors",
-		"query": "(severity:Error OR severity:Fatal) AND isNew:true AND NOT applicationName.raw:\"Uptime Monitoring\"",
+		"query": "(severity:Error OR severity:Fatal) AND isNew:true AND NOT isUptime:true AND NOT isHeartbeat:true",
 		"then": {
 			"type": "http",
 			"url": "https://dev.azure.com/$organization/$project/_apis/wit/workitems/$Bug?api-version=4.1",
